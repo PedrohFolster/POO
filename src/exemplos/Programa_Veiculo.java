@@ -3,21 +3,21 @@ package exemplos;
 public class Programa_Veiculo {
 
 	public static void main(String[] args) {
-		
-		Carro c1 = new Carro("Focus","Ford",2020,45000.00,170);
+
+		Carro c1 = new Carro("Focus", "Ford", 2020, 45000.00, 170);
 		System.out.println("Modelo: " + c1.getModelo());
-		Carro c2 = new Carro("Golf","Volks",2020,15000.00,120);
-		Carro c3 = new Carro("Fusca","Volks",1980,35000.00,190);
-		
-		Moto m1 = new Moto("CG-150","Honda",2022,8000.00,300);
-		Moto m2 = new Moto("Ninja-1000","Kawasaki",2011,10000.00,1000);
-		Moto m3 = new Moto("Harley","Harleeey",1995,50000.00,1200);
-		
-		Carro[] listaCarros = {c1,c2,c3};
-		Moto[] listaMotos = {m1,m2,m3};
-		
+		Carro c2 = new Carro("Golf", "Volks", 2020, 15000.00, 120);
+		Carro c3 = new Carro("Fusca", "Volks", 1980, 35000.00, 190);
+
+		Moto m1 = new Moto("CG-150", "Honda", 2022, 8000.00, 300);
+		Moto m2 = new Moto("Ninja-1000", "Kawasaki", 2011, 10000.00, 1000);
+		Moto m3 = new Moto("Harley", "Harleeey", 1995, 50000.00, 1200);
+
+		Carro[] listaCarros = {c1, c2, c3};
+		Moto[] listaMotos = {m1, m2, m3};
+
 		System.out.println();
-		
+
 		System.out.println("Valor antes da depreciação: " + c1.getValor());
 		c1.calcularDepreciacao();
 		System.out.println("Valor depois da depreciação: " + c1.getValor());
@@ -81,5 +81,5 @@ public class Programa_Veiculo {
 		}
 		System.out.println("A moto mais antiga é a moto: " + moto);
 	}*/
-    
+	}
 }
