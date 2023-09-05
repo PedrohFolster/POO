@@ -1,8 +1,12 @@
 package simuladoNovo;
 
+import java.util.Scanner;
+
 public class Executavel {
 
     public static void main(String[] args) {
+
+        Scanner scan = new Scanner(System.in);
 
         Endereco e1 = new Endereco("Rua dos remédios", 100, "Centro", "Palhoça", "Santa Catarina");
         Laboratorio l1 = new Laboratorio("Legrand", "12.345.678/0001-11", e1);
@@ -26,8 +30,57 @@ public class Executavel {
         Remedio losartana = new Remedio("Losartana", 45, l2);
         Remedio torsilax = new Remedio("Torsilax", 15, l2);
 
+        Estoque responsavel = new Estoque("Luciano");
+
         Farmacia f1 = new Farmacia("Farmacia do Senac", "12.345.678/0001-33", "Rua Jardim Silva", 360, "Centro", "Florianópolis", "Santa Catarina");
 
+        Remedio[] legrand = {
+                rosuvas1, rosuvas2, rosuvas3, rosuvas4, glifage1, glifage2, glifage3,
+                aradois_h1, aradois_h2, trandilax1
+        };
+
+        Remedio[] medley = {
+                rosuvastatina, lexotan, losartana, torsilax
+        };
+
+        double totalEmReais = 0;
+        double legrandReais = 0;
+        double medleyReais = 0;
+
+        for (Remedio remedio : legrand) {
+            legrandReais += remedio.getPreco();
+            totalEmReais += remedio.getPreco();
+        }
+
+        for (Remedio remedio : medley) {
+            medleyReais += remedio.getPreco();
+            totalEmReais += remedio.getPreco();
+        }
+
+        System.out.println("O nome do responsável pelo estoque é: " + responsavel.getResponsavel());
+        System.out.println("O total em reais (R$) em estoque é de: " + totalEmReais);
+
+        System.out.print("Informe o nome do departamento que você deseja obter o estoque: ");
+        String encontrarNome = scan.nextLine();
+
+        Laboratorio[] laboratorios = { l1, l2 };
+        boolean departamentoEncontrado = false;
+
+        for (Laboratorio laboratorio : laboratorios) {
+            if (laboratorio.getNome().equalsIgnoreCase(encontrarNome)) {
+                if (encontrarNome.equalsIgnoreCase("medley")) {
+                    System.out.println("Valor em estoque do laboratório " + laboratorio.getNome() + " é de: " + medleyReais);
+                } else if (encontrarNome.equalsIgnoreCase("legrand")) {
+                    System.out.println("Valor em estoque do laboratório " + laboratorio.getNome() + " é de: " + legrandReais);
+                }
+                departamentoEncontrado = true;
+                break;
+            }
+        }
+
+        if (!departamentoEncontrado) {
+            System.out.println("Laboratório não encontrado!");
+        }
 
     }
 }

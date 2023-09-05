@@ -40,4 +40,13 @@ public class Remedio {
     public void setLaboratorio(Laboratorio laboratorio) {
         this.laboratorio = laboratorio;
     }
+
+    @Override
+    public String toString() {
+        return "Remedio{" +
+                "nome='" + nome + '\'' +
+                ", preco=" + preco +
+                ", laboratorio=" + laboratorio +
+                '}';
+    }
 }
