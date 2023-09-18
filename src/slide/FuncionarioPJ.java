@@ -1,0 +1,13 @@
+package slide;
+
+public class FuncionarioPJ extends Funcionario {
+
+    public FuncionarioPJ(String nome, int idade, int matricula) {
+        super(nome, idade, matricula);
+    }
+
+    @Override
+    public double CalcularPagamento() {
+        return (1000 * 2.5) + 5000 ;
+    }
+}
