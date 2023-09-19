@@ -1,4 +1,4 @@
-package simuladoNovo;
+package PrimeiroSimulado;
 
 public class Farmacia extends Empresa {
 

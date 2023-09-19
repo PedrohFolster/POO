@@ -1,19 +1,19 @@
-package simuladoNovo;
+package SegundoSimulado;
 
-public class Empresa {
+public abstract class Pessoa {
 
     private String nome;
-    private String cnpj;
+    private int idade;
     private Endereco endereco;
 
-    public Empresa(String nome, String cnpj, Endereco endereco) {
+    public Pessoa(String nome, int idade, Endereco endereco) {
         super();
         this.nome = nome;
-        this.cnpj = cnpj;
+        this.idade = idade;
         this.endereco = endereco;
     }
 
-    public Empresa() {
+    public Pessoa() {
         super();
     }
 
@@ -25,12 +25,12 @@ public class Empresa {
         this.nome = nome;
     }
 
-    public String getCnpj() {
-        return cnpj;
+    public int getIdade() {
+        return idade;
     }
 
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
+    public void setIdade(int idade) {
+        this.idade = idade;
     }
 
     public Endereco getEndereco() {
@@ -43,9 +43,9 @@ public class Empresa {
 
     @Override
     public String toString() {
-        return "Empresa{" +
+        return "Pessoa{" +
                 "nome='" + nome + '\'' +
-                ", cnpj='" + cnpj + '\'' +
+                ", idade=" + idade +
                 ", endereco=" + endereco +
                 '}';
     }

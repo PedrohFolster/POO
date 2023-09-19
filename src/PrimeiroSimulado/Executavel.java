@@ -1,4 +1,4 @@
-package simuladoNovo;
+package PrimeiroSimulado;
 
 import java.util.Scanner;
 
