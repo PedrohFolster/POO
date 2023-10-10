@@ -25,6 +25,7 @@ public class Executavel {
         Revista veja = new Revista("Revista Veja", 60, LocalDate.of(2012, 12, 01), drummond);
         Livro brejo = new Livro("Brejo das Almas", 8, LocalDate.of(1983, 01, 30), drummond);
 
-        Revista istoe = new Revista("IstoÉ", 80, )
+        Revista istoe = new Revista("IstoÉ", 80, LocalDate.of(2013, 06, 01), assis);
+        Livro quincas = new Livro("Quincas Borba", 1, LocalDate.of(1892, 05, 13), assis);
     }
 }
