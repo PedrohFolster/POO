@@ -1,8 +1,6 @@
 package TerceiroSimulado;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Formatter;
 import java.util.Scanner;
 
 public class Executavel {
@@ -10,7 +8,6 @@ public class Executavel {
     public static void main(String[] args) {
 
         Scanner scan = new Scanner(System.in);
-        DateTimeFormatter dataDeNascimento = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
         Endereco enderecoDrummond = new Endereco("Rua das maças", 100, "Ingleses", "Florianópolis", "Santa Catarina");
         Autor drummond = new Autor("Carlos Drummond", LocalDate.of(1946, 10, 1), enderecoDrummond);
@@ -70,5 +67,7 @@ public class Executavel {
         System.out.println("Informe o nome de uma cidade: ");
         cidade = scan.nextLine();
         biblioteca.localizarAutorCidade(cidade);
+
+        // 7
     }
 }
