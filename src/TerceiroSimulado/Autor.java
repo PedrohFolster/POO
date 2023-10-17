@@ -42,4 +42,13 @@ public class Autor {
     public void setEnderecoAutor(Endereco enderecoAutor) {
         this.enderecoAutor = enderecoAutor;
     }
+
+    @Override
+    public String toString() {
+        return "Autor{" +
+                "nome='" + nome + '\'' +
+                ", dataNascimento=" + dataNascimento +
+                ", enderecoAutor=" + enderecoAutor +
+                '}';
+    }
 }

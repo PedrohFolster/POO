@@ -53,4 +53,14 @@ public abstract class Obra {
     public void setAutor(Autor autor) {
         this.autor = autor;
     }
+
+    @Override
+    public String toString() {
+        return "Obra{" +
+                "titulo='" + titulo + '\'' +
+                ", edicao=" + edicao +
+                ", dataPublicacao=" + dataPublicacao +
+                ", autor=" + autor +
+                '}';
+    }
 }
