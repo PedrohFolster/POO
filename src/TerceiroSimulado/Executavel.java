@@ -67,7 +67,5 @@ public class Executavel {
         System.out.println("Informe o nome de uma cidade: ");
         cidade = scan.nextLine();
         biblioteca.localizarAutorCidade(cidade);
-
-        // 7y
     }
 }
