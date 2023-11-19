@@ -1,5 +1,7 @@
 package refazerSimuladoTres;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.time.format.DateTimeFormatter;
 
 public class Biblioteca {
@@ -71,5 +73,30 @@ public class Biblioteca {
             }
         }
         System.out.println("O autor mais novo é:" + autorMaisNovo);
+    }
+
+    public void diferencaIdade() {
+        Autor autorMaisNovo = listaObras[0].getAutor();
+        Autor autorMaisVelho = listaObras[0].getAutor();
+
+        for (Obra obra : this.getListaObras()) {
+            if (obra.getAutor().getDataNascimento().isAfter(autorMaisNovo.getDataNascimento())) {
+                autorMaisNovo = obra.getAutor();
+            }
+        }
+
+        for (Obra obra : this.getListaObras()) {
+            if (obra.getAutor().getDataNascimento().isBefore(autorMaisVelho.getDataNascimento())) {
+                autorMaisVelho = obra.getAutor();
+            }
+        }
+
+        Period diferencaIdade = Period.between(autorMaisVelho.getDataNascimento(), autorMaisNovo.getDataNascimento());
+
+        System.out.println("O autor mais novo é: " + autorMaisNovo);
+        System.out.println("O autor mais velho é: " + autorMaisVelho);
+        System.out.println("A diferença de idade é: " + diferencaIdade.getYears() + " anos, " +
+                diferencaIdade.getMonths() + " meses e " +
+                diferencaIdade.getDays() + " dias.");
     }
 }

@@ -51,5 +51,9 @@ public class Executavel {
         System.out.println();
         // 3 - Autor mais novo
         biblioteca.autorMaisNovo();
+
+        System.out.println();
+        // 4 - Diferença de idade autores
+        biblioteca.diferencaIdade();
     }
 }
