@@ -55,5 +55,13 @@ public class Executavel {
         System.out.println();
         // 4 - Diferença de idade autores
         biblioteca.diferencaIdade();
+
+        System.out.println();
+        // 5 - Localizar um autor
+        biblioteca.localizarEnderecoAutor("Carlos Drummond");
+
+        System.out.println();
+        // 5 - Localizar por cidade
+        biblioteca.localizarPorCidade("Florianópolis");
     }
 }
