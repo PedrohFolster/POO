@@ -108,7 +108,7 @@ public class Biblioteca {
         Period diferenca = Period.between(autorMaisVelho.getDataNascimento(), autorMaisNovo.getDataNascimento());
 
         System.out.println("A diferença entre os dois autores é de: " + diferenca.getYears() + " anos, "
-                + diferenca.getMonths() + " meses" + diferenca.getDays() + " dias.");
+                + diferenca.getMonths() + " meses " + diferenca.getDays() + " dias.");
 
     }
 
@@ -116,7 +116,7 @@ public class Biblioteca {
 
         boolean encontrado = false;
 
-        System.out.println("O endereço do autor " + nome + " é: ");
+        System.out.println("O endereço do autor \"" + nome + "\" é: ");
 
         for (Obra obra : this.listaObras) {
             if (obra.getAutor().getNome().equalsIgnoreCase(nome)) {
