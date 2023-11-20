@@ -55,7 +55,11 @@ public class Executavel {
         biblioteca.diferencaIdade();
 
         System.out.println();
-        // 5 - Localizar Endereco Autor
+        // 5 - Autor por nome
+        biblioteca.localizarAutorPorNome("Machado de Assis");
+
+        System.out.println();
+        // 6 - Localizar Endereco Autor
         biblioteca.localizarEnderecoAutor("Florianópolis");
     }
 }
