@@ -120,26 +120,19 @@ public class Escola {
     }
 
     public void listarAlunasPorCidade(String cidade) {
-        Set<Aluno> alunasPorCidade = new HashSet<>();
         boolean encontrado = false;
 
-        System.out.println("Alunas que residem na cidade de " + cidade + ": ");
-
+        System.out.println("Alunos que residem na cidade de " + cidade + ": ");
         for (Turma turma : this.getTurmas()) {
             for (Aluno aluno : turma.getAlunos()) {
                 if (aluno.getEndereco().getCidade().equalsIgnoreCase(cidade)) {
-                    alunasPorCidade.add(aluno);
                     encontrado = true;
+                    System.out.println(aluno.getNome());
                 }
             }
         }
-
-        for (Aluno aluno : alunasPorCidade) {
-            System.out.println(aluno.getNome());
-        }
-
         if (!encontrado) {
-            System.out.println("Não há alunas que residem na cidade informada.");
+            System.out.println("Não foram encontrados alunos que residem na cidade informada.");
         }
     }
 }
