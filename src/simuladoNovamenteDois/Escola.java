@@ -56,37 +56,35 @@ public class Escola {
         this.turmas = turmas;
     }
 
-
     public void contabilizarAlunos() {
-
         int total = 0;
-
         for (Turma turma : this.getTurmas()) {
             total += turma.getAlunos().length;
         }
-        System.out.println("O total de alunos é: " + total);
+        System.out.println("Há " + total + " alunos nesta escola.");
     }
 
     public void localizarRegente(String nome) {
         boolean encontrado = false;
-        System.out.println("Buscando regente " + nome + "...");
+
+        System.out.println("Procurando o regente com nome " + nome + "...");
 
         for (Turma turma : this.getTurmas()) {
             if (turma.getRegente().getNome().equalsIgnoreCase(nome)) {
                 encontrado = true;
-                System.out.println(turma.getRegente().getEndereco());
+                System.out.println(turma.getRegente());
                 break;
             }
         }
         if (!encontrado) {
-            System.out.println("Não foram encontrados regentes com esse nome.");
+            System.out.println("Regente não encontrado, verifique o nome e tente novamente!");
         }
     }
 
     public void localizarPorSerie(int serie) {
         boolean encontrado = false;
 
-        System.out.println("Visualizando alunos da " + serie + "° série: ");
+        System.out.println("Pesquisando alunos da " + serie + "° série...");
 
         for (Turma turma : this.getTurmas()) {
             for (Aluno aluno : turma.getAlunos()) {
@@ -97,7 +95,7 @@ public class Escola {
             }
         }
         if (!encontrado) {
-            System.out.println("Não foram encontrados alunos na turma informada.");
+            System.out.println("Não foram encontrados alunos nesta turma!");
         }
     }
 
@@ -109,18 +107,17 @@ public class Escola {
                 maisNovo = turma.getRegente();
             }
         }
-
         if (maisNovo != null) {
-            System.out.println("Informações do regente mais novo: " + maisNovo);
+            System.out.println("O regente mais novo é: " + maisNovo);
         } else {
-            System.out.println("Não foi encontrado nenhum regente!");
+            System.out.println("Não foram encontrado regentes!");
         }
     }
 
     public void listarAlunasPorCidade(String cidade) {
         boolean encontrado = false;
 
-        System.out.println("Buscando alunos da cidade " + cidade + "...");
+        System.out.println("Listando todos os alunos da cidade " + cidade + "...");
 
         for (Turma turma : this.getTurmas()) {
             for (Aluno aluno : turma.getAlunos()) {
@@ -131,7 +128,7 @@ public class Escola {
             }
         }
         if (!encontrado) {
-            System.out.println("Não foram encontrados alunos na cidade informada.");
+            System.out.println("Não foram encontrados alunos para esta cidade");
         }
     }
 }
