@@ -1,5 +1,10 @@
 package simuladoNovamenteDois;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 public class Escola {
 
     private String nome;
@@ -57,40 +62,44 @@ public class Escola {
         for (Turma turma : this.getTurmas()) {
             total += turma.getAlunos().length;
         }
-        System.out.println("A quantidade total de alunos é: " + total);
+        System.out.println("Há " + total + " alunas na escola.");
     }
 
-
     public void localizarRegente(String nome) {
-
         boolean encontrado = false;
 
         for (Turma turma : this.getTurmas()) {
             if (turma.getRegente().getNome().equalsIgnoreCase(nome)) {
                 encontrado = true;
-                System.out.println("Endereço do regente: " + nome);
+                System.out.println("O regente " + nome + " reside em: ");
                 System.out.println(turma.getRegente().getEndereco());
-                break;
             }
         }
+
         if (!encontrado) {
-            System.out.println("Regente não encontrado!");
+            System.out.println("Não foi encontrado nenhum regente com esse nome!");
         }
     }
 
     public void localizarPorSerie(int serie) {
-
+        Set<Aluno> adicionarAlunas = new HashSet<>();
         boolean encontrado = false;
+
+        System.out.println("Alunos da " + serie + "° serie: \n");
 
         for (Turma turma : this.getTurmas()) {
             if (turma.getSerie() == serie) {
                 encontrado = true;
-                turma.listarAlunas();
+                adicionarAlunas.addAll(Arrays.asList(turma.getAlunos()));
             }
         }
 
-        if (!encontrado) {
-            System.out.println("Turma não encontrada!");
+        for (Aluno aluno : adicionarAlunas) {
+            System.out.println(aluno.getNome());
+        }
+
+        if (adicionarAlunas.isEmpty()) {
+            System.out.println("Não há pessoas nesta turma.");
         }
     }
 
@@ -104,22 +113,33 @@ public class Escola {
         }
 
         if (regenteMaisNovo != null) {
-            System.out.println("O regente mais novo é: " + regenteMaisNovo);
+            System.out.println("O regente mais novo é: \n" + regenteMaisNovo);
         } else {
-            System.out.println("Nenhuma turma encontrada");
+            System.out.println("Não foi encontrado nenhum regente.");
         }
     }
 
-
     public void listarAlunasPorCidade(String cidade) {
+        Set<Aluno> alunasPorCidade = new HashSet<>();
         boolean encontrado = false;
 
-        System.out.println("Nome das alunas que moram na cidade " + cidade + ": \n");
+        System.out.println("Alunas que residem na cidade de " + cidade + ": ");
 
         for (Turma turma : this.getTurmas()) {
-            if (turma.getAlunos()[0].getEndereco().getCidade().equalsIgnoreCase(cidade)) {
-                turma.listarAlunasPorCidade();
+            for (Aluno aluno : turma.getAlunos()) {
+                if (aluno.getEndereco().getCidade().equalsIgnoreCase(cidade)) {
+                    alunasPorCidade.add(aluno);
+                    encontrado = true;
+                }
             }
+        }
+
+        for (Aluno aluno : alunasPorCidade) {
+            System.out.println(aluno.getNome());
+        }
+
+        if (!encontrado) {
+            System.out.println("Não há alunas que residem na cidade informada.");
         }
     }
 }
