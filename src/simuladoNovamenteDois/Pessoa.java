@@ -44,7 +44,7 @@ public abstract class Pessoa {
     @Override
     public String toString() {
         return "Nome: " + nome + ',' +
-                " idade:" + idade + ',' +
+                " idade: " + idade + ',' +
                 " endereco: " + endereco;
     }
 }
