@@ -45,80 +45,79 @@ public class Biblioteca {
         this.enderecoBiblioteca = enderecoBiblioteca;
     }
 
-
     public void contabilizarObras() {
         System.out.println("Há " + listaObras.length + " obras na biblioteca!");
     }
 
     public void listarObraMaisAntiga() {
-        Obra obraMaisAntiga = null;
+        Obra maisAntiga = null;
 
-        for (Obra obra : this.listaObras) {
-            if (obraMaisAntiga == null || obra.getDataPublicacao().isBefore(obraMaisAntiga.getDataPublicacao())) {
-                obraMaisAntiga = obra;
+        for (Obra obra : listaObras) {
+            if (maisAntiga == null || obra.getDataPublicacao().isBefore(maisAntiga.getDataPublicacao())) {
+                maisAntiga = obra;
             }
         }
-        if (obraMaisAntiga != null) {
-            System.out.println("A obra mais antiga é: " + obraMaisAntiga);
+        if (maisAntiga != null) {
+            System.out.println("A obra mais antiga é a obra: " + maisAntiga);
         } else {
-            System.out.println("Não foram encontradas obras para serem listadas!");
+            System.out.println("Não foram encontradas obras para serem listadas.");
         }
     }
 
     public void listarAutorMaisNovo() {
-        Autor autorMaisNovo = null;
+        Autor maisNovo = null;
 
         for (Obra obra : listaObras) {
-            if (autorMaisNovo == null || obra.getAutor().getDataNascimento().isAfter(autorMaisNovo.getDataNascimento())) {
-                autorMaisNovo = obra.getAutor();
+            if (maisNovo == null || obra.getAutor().getDataNascimento().isAfter(maisNovo.getDataNascimento())) {
+                maisNovo = obra.getAutor();
             }
         }
-        if (autorMaisNovo != null) {
-            System.out.println("O autor mais novo é: " + autorMaisNovo);
+        if (maisNovo != null) {
+            System.out.println("O autor mais novo é: " + maisNovo);
         } else {
-            System.out.println("Não há autores para serem listados");
+            System.out.println("Não foram encontradas obras para serem listadas.");
         }
     }
 
     public void diferencaIdade() {
-        Autor autorMaisNovo = null;
+        Autor maisNovo = null;
 
         for (Obra obra : listaObras) {
-            if (autorMaisNovo == null || obra.getAutor().getDataNascimento().isAfter(autorMaisNovo.getDataNascimento())) {
-                autorMaisNovo = obra.getAutor();
+            if (maisNovo == null || obra.getAutor().getDataNascimento().isAfter(maisNovo.getDataNascimento())) {
+                maisNovo = obra.getAutor();
             }
         }
-        if (autorMaisNovo == null) {
-            System.out.println("Não há autores para serem listados");
+        if (maisNovo == null) {
+            System.out.println("Não foram encontradas obras para serem listadas.");
         }
 
-        Autor autorMaisVelho = null;
+        Autor maisVelho = null;
 
         for (Obra obra : listaObras) {
-            if (autorMaisVelho == null || obra.getAutor().getDataNascimento().isBefore(autorMaisVelho.getDataNascimento())) {
-                autorMaisVelho = obra.getAutor();
+            if (maisVelho == null || obra.getAutor().getDataNascimento().isBefore(maisVelho.getDataNascimento())) {
+                maisVelho = obra.getAutor();
             }
         }
-        if (autorMaisVelho != null) {
-            System.out.println("O autor mais velho é: " + autorMaisVelho);
+        if (maisNovo != null) {
+            System.out.println("O autor mais velho é: " + maisVelho);
         } else {
-            System.out.println("Não há autores para serem listados");
+            System.out.println("Não foram encontradas obras para serem listadas.");
         }
 
-        Period diferenca = Period.between(autorMaisVelho.getDataNascimento(), autorMaisNovo.getDataNascimento());
+        Period diferenca = Period.between(maisVelho.getDataNascimento(), maisNovo.getDataNascimento());
 
-        System.out.println("A diferença entre os dois autores é de: " + diferenca.getYears() + " anos, "
-                + diferenca.getMonths() + " meses " + diferenca.getDays() + " dias.");
-
+        System.out.println("A diferença entre os autores é de: "
+                        + diferenca.getYears() + " anos, "
+                        + diferenca.getMonths() + " meses, "
+                        + diferenca.getDays() + " dias.");
     }
 
     public void localizarAutorPorNome(String nome) {
-
         boolean encontrado = false;
 
-        System.out.println("O endereço do autor \"" + nome + "\" é: ");
+        System.out.println("Buscando o autor " + nome + "...");
 
-        for (Obra obra : this.listaObras) {
+        for (Obra obra : listaObras) {
             if (obra.getAutor().getNome().equalsIgnoreCase(nome)) {
                 encontrado = true;
                 System.out.println(obra.getAutor().getEnderecoAutor());
@@ -126,25 +125,26 @@ public class Biblioteca {
             }
         }
         if (!encontrado) {
-            System.out.println("Não foram encontrados autores com o nome informado como parametro.");
+            System.out.println("Não foram encontrados autores com esse nome.");
         }
     }
 
     public void localizarEnderecoAutor(String cidade) {
-        Set<Autor> encontrarAutor = new HashSet<>();
-        System.out.println("Autores encontrados que moram na cidade " + cidade + ": ");
+        Set<Autor> adicionarAutor = new HashSet<>();
 
-        for (Obra obra : this.listaObras) {
+        System.out.println("Autores que residem na cidade de " + cidade + ": ");
+
+        for (Obra obra : listaObras) {
             if (obra.getAutor().getEnderecoAutor().getCidade().equalsIgnoreCase(cidade)) {
-                encontrarAutor.add(obra.getAutor());
+                adicionarAutor.add(obra.getAutor());
             }
         }
 
-        for (Autor autor : encontrarAutor) {
+        for (Autor autor : adicionarAutor) {
             System.out.println(autor.getNome());
         }
 
-        if (encontrarAutor.isEmpty()) {
+        if (adicionarAutor.isEmpty()) {
             System.out.println("Não foram encontrados autores que residem na cidade informada.");
         }
     }
