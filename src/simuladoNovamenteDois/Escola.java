@@ -95,14 +95,21 @@ public class Escola {
     }
 
     public void regenteMaisNovo() {
-        Professor regenteMaisNovo = getTurmas()[0].getRegente();
+        Professor regenteMaisNovo = null;
 
         for (Turma turma : this.getTurmas()) {
-            if (turma.getRegente().getIdade() < regenteMaisNovo.getIdade()) {
-                System.out.println("O regente mais novo é: " + regenteMaisNovo);
+            if (regenteMaisNovo == null || turma.getRegente().getIdade() < regenteMaisNovo.getIdade()) {
+                regenteMaisNovo = turma.getRegente();
             }
         }
+
+        if (regenteMaisNovo != null) {
+            System.out.println("O regente mais novo é: " + regenteMaisNovo);
+        } else {
+            System.out.println("Nenhuma turma encontrada");
+        }
     }
+
 
     public void listarAlunasPorCidade(String cidade) {
         boolean encontrado = false;
