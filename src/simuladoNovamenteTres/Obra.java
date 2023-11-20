@@ -61,6 +61,6 @@ public abstract class Obra {
         return "\nTitulo: " + titulo + "," +
                 " Edicao: " + edicao + "," +
                 " Data de publicacao: " + dataPublicacao.format(formatter) + "," +
-                "\nAutor:" + autor;
+                "\nAutor: " + autor;
     }
 }

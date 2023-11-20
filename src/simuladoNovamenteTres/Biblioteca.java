@@ -1,5 +1,7 @@
 package simuladoNovamenteTres;
 
+import simuladoNovamenteDois.Turma;
+
 import java.time.Period;
 import java.util.HashSet;
 import java.util.Set;
@@ -46,81 +48,87 @@ public class Biblioteca {
     }
 
     public void contabilizarObras() {
-        System.out.println("Há " + listaObras.length + " obras na biblioteca!");
+        System.out.println("A quantidade de obras presentes na biblioteca é de: " + this.getListaObras().length);
     }
 
     public void listarObraMaisAntiga() {
         Obra maisAntiga = null;
 
-        for (Obra obra : listaObras) {
+        System.out.println("Buscando a obra mais antiga...");
+
+        for (Obra obra : this.listaObras) {
             if (maisAntiga == null || obra.getDataPublicacao().isBefore(maisAntiga.getDataPublicacao())) {
                 maisAntiga = obra;
             }
         }
         if (maisAntiga != null) {
-            System.out.println("A obra mais antiga é a obra: " + maisAntiga);
+            System.out.println(maisAntiga);
         } else {
-            System.out.println("Não foram encontradas obras para serem listadas.");
+            System.out.println("Não foram encontradas obras para serem listadas!");
         }
     }
 
     public void listarAutorMaisNovo() {
         Autor maisNovo = null;
 
-        for (Obra obra : listaObras) {
+        System.out.println("Buscando autor mais novo...");
+
+        for (Obra obra : this.listaObras) {
             if (maisNovo == null || obra.getAutor().getDataNascimento().isAfter(maisNovo.getDataNascimento())) {
                 maisNovo = obra.getAutor();
             }
         }
         if (maisNovo != null) {
-            System.out.println("O autor mais novo é: " + maisNovo);
+            System.out.println(maisNovo);
         } else {
-            System.out.println("Não foram encontradas obras para serem listadas.");
+            System.out.println("Não foram encontrados autores para serem listados!");
         }
     }
 
     public void diferencaIdade() {
         Autor maisNovo = null;
 
-        for (Obra obra : listaObras) {
+        for (Obra obra : this.listaObras) {
             if (maisNovo == null || obra.getAutor().getDataNascimento().isAfter(maisNovo.getDataNascimento())) {
                 maisNovo = obra.getAutor();
             }
         }
         if (maisNovo == null) {
-            System.out.println("Não foram encontradas obras para serem listadas.");
+            System.out.println("Não foram encontrados autores para serem listados!");
         }
 
         Autor maisVelho = null;
 
-        for (Obra obra : listaObras) {
+        System.out.println("Buscando autor mais velho...");
+
+        for (Obra obra : this.listaObras) {
             if (maisVelho == null || obra.getAutor().getDataNascimento().isBefore(maisVelho.getDataNascimento())) {
                 maisVelho = obra.getAutor();
             }
         }
-        if (maisNovo != null) {
-            System.out.println("O autor mais velho é: " + maisVelho);
+        if (maisVelho != null) {
+            System.out.println(maisVelho);
         } else {
-            System.out.println("Não foram encontradas obras para serem listadas.");
+            System.out.println("Não foram encontrados autores para serem listados!");
         }
 
         Period diferenca = Period.between(maisVelho.getDataNascimento(), maisNovo.getDataNascimento());
 
-        System.out.println("A diferença entre os autores é de: "
-                        + diferenca.getYears() + " anos, "
-                        + diferenca.getMonths() + " meses, "
-                        + diferenca.getDays() + " dias.");
+        System.out.println("A diferença de idade entre os autores é de: " +
+                           diferenca.getYears() + " anos, " +
+                           diferenca.getMonths() + " meses, " +
+                           diferenca.getDays() + " dias.");
     }
 
     public void localizarAutorPorNome(String nome) {
         boolean encontrado = false;
 
-        System.out.println("Buscando o autor " + nome + "...");
+        System.out.println("Buscando o autor com nome " + nome + "...");
 
-        for (Obra obra : listaObras) {
+        for (Obra obra : this.listaObras) {
             if (obra.getAutor().getNome().equalsIgnoreCase(nome)) {
                 encontrado = true;
-                System.out.println(obra.getAutor().getEnderecoAutor());
+                System.out.println(obra.getAutor());
                 break;
             }
         }
@@ -130,22 +138,21 @@ public class Biblioteca {
     }
 
     public void localizarEnderecoAutor(String cidade) {
+        boolean encontrado = false;
         Set<Autor> adicionarAutor = new HashSet<>();
 
-        System.out.println("Autores que residem na cidade de " + cidade + ": ");
+        System.out.println("Buscando autores que residem na cidade de " + cidade + "...");
 
-        for (Obra obra : listaObras) {
+        for (Obra obra : this.listaObras) {
             if (obra.getAutor().getEnderecoAutor().getCidade().equalsIgnoreCase(cidade)) {
                 adicionarAutor.add(obra.getAutor());
             }
         }
-
         for (Autor autor : adicionarAutor) {
             System.out.println(autor.getNome());
         }
-
         if (adicionarAutor.isEmpty()) {
-            System.out.println("Não foram encontrados autores que residem na cidade informada.");
+            System.out.println("Não há nenhum autor que reside na cidade informada.");
         }
     }
 }

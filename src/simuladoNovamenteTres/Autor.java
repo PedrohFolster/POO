@@ -47,7 +47,7 @@ public class Autor {
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     @Override
     public String toString() {
-        return   " " + nome + "," +
+        return   "" + nome + "," +
                 " Data de nascimento: " + dataNascimento.format(formatter) +
                 "\nEndereço do Autor: " + enderecoAutor;
     }
