@@ -92,9 +92,7 @@ public class Biblioteca {
             }
         }
 
-        if (autorMaisNovo != null) {
-            System.out.println("O autor mais novo é: " + autorMaisNovo);
-        } else {
+        if (autorMaisNovo == null) {
             System.out.println("Não foram encontrados registros para autor");
         }
 
